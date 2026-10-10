@@ -1,0 +1,2906 @@
+{
+  "dataset": "data/broker_client_cases.json",
+  "total_samples": 20,
+  "entity_threshold": 0.25,
+  "relation_threshold": 0.35,
+  "metrics": {
+    "entity_micro": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 80,
+      "fp": 0,
+      "fn": 0
+    },
+    "relation_micro": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 60,
+      "fp": 0,
+      "fn": 0
+    }
+  },
+  "per_sample_results": [
+    {
+      "index": 0,
+      "text": "Kancelaria Brokerska Nord Partner Sp. z o.o. (NIP: 5841234567), działając jako broker ubezpieczeniowy na rzecz klienta Alfa Logistyka S.A. (NIP: 5259876543), składa zapytanie ofertowe.",
+      "predicted_entities": [
+        {
+          "text": "Nord Partner Sp. z o.o.",
+          "label": "broker",
+          "score": 0.6557,
+          "start": 21,
+          "end": 44
+        },
+        {
+          "text": "5841234567",
+          "label": "NIP",
+          "score": 0.8855,
+          "start": 51,
+          "end": 61
+        },
+        {
+          "text": "Alfa Logistyka S.A.",
+          "label": "client",
+          "score": 0.8553,
+          "start": 119,
+          "end": 138
+        },
+        {
+          "text": "5259876543",
+          "label": "NIP",
+          "score": 0.8828,
+          "start": 145,
+          "end": 155
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Nord Partner Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 21,
+          "end": 44
+        },
+        {
+          "text": "5841234567",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 51,
+          "end": 61
+        },
+        {
+          "text": "Alfa Logistyka S.A.",
+          "label": "client",
+          "score": 1.0,
+          "start": 119,
+          "end": 138
+        },
+        {
+          "text": "5259876543",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 145,
+          "end": 155
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Nord Partner Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5841234567",
+          "score": 1.0,
+          "source_span": [
+            21,
+            44
+          ],
+          "target_span": [
+            51,
+            61
+          ]
+        },
+        {
+          "source": "Alfa Logistyka S.A.",
+          "relation": "has NIP",
+          "target": "5259876543",
+          "score": 1.0,
+          "source_span": [
+            119,
+            138
+          ],
+          "target_span": [
+            145,
+            155
+          ]
+        },
+        {
+          "source": "Nord Partner Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Alfa Logistyka S.A.",
+          "score": 1.0,
+          "source_span": [
+            21,
+            44
+          ],
+          "target_span": [
+            119,
+            138
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Nord Partner Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5841234567",
+          "score": 1.0
+        },
+        {
+          "source": "Alfa Logistyka S.A.",
+          "relation": "has NIP",
+          "target": "5259876543",
+          "score": 1.0
+        },
+        {
+          "source": "Nord Partner Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Alfa Logistyka S.A.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 1,
+      "text": "Mocodawca Krak-Bud Sp. z o.o. o numerze NIP 6760011223 udziela pełnomocnictwa firmie Vistula Insurance Broker Sp. k. legitymującej się NIP 7791122334.",
+      "predicted_entities": [
+        {
+          "text": "Krak-Bud Sp. z o.o.",
+          "label": "client",
+          "score": 0.7707,
+          "start": 10,
+          "end": 29
+        },
+        {
+          "text": "6760011223",
+          "label": "NIP",
+          "score": 0.8248,
+          "start": 44,
+          "end": 54
+        },
+        {
+          "text": "Vistula Insurance Broker Sp. k.",
+          "label": "broker",
+          "score": 0.907,
+          "start": 85,
+          "end": 116
+        },
+        {
+          "text": "7791122334",
+          "label": "NIP",
+          "score": 0.8183,
+          "start": 139,
+          "end": 149
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Krak-Bud Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 10,
+          "end": 29
+        },
+        {
+          "text": "6760011223",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 44,
+          "end": 54
+        },
+        {
+          "text": "Vistula Insurance Broker Sp. k.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 85,
+          "end": 116
+        },
+        {
+          "text": "7791122334",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 139,
+          "end": 149
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Vistula Insurance Broker Sp. k.",
+          "relation": "has NIP",
+          "target": "7791122334",
+          "score": 1.0,
+          "source_span": [
+            85,
+            116
+          ],
+          "target_span": [
+            139,
+            149
+          ]
+        },
+        {
+          "source": "Krak-Bud Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "6760011223",
+          "score": 1.0,
+          "source_span": [
+            10,
+            29
+          ],
+          "target_span": [
+            44,
+            54
+          ]
+        },
+        {
+          "source": "Vistula Insurance Broker Sp. k.",
+          "relation": "broker for",
+          "target": "Krak-Bud Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            85,
+            116
+          ],
+          "target_span": [
+            10,
+            29
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Vistula Insurance Broker Sp. k.",
+          "relation": "has NIP",
+          "target": "7791122334",
+          "score": 1.0
+        },
+        {
+          "source": "Krak-Bud Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "6760011223",
+          "score": 1.0
+        },
+        {
+          "source": "Vistula Insurance Broker Sp. k.",
+          "relation": "broker for",
+          "target": "Krak-Bud Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 2,
+      "text": "Zleceniodawca Apex Trade Sp. z o.o. (NIP: 8990011223) upoważnia dom brokerski Omega Broker S.A. (NIP: 1234567890) do negocjowania warunków ubezpieczenia majątkowego.",
+      "predicted_entities": [
+        {
+          "text": "Apex Trade Sp. z o.o.",
+          "label": "client",
+          "score": 0.8601,
+          "start": 14,
+          "end": 35
+        },
+        {
+          "text": "8990011223",
+          "label": "NIP",
+          "score": 0.7544,
+          "start": 42,
+          "end": 52
+        },
+        {
+          "text": "Omega Broker S.A.",
+          "label": "broker",
+          "score": 0.8609,
+          "start": 78,
+          "end": 95
+        },
+        {
+          "text": "1234567890",
+          "label": "NIP",
+          "score": 0.7592,
+          "start": 102,
+          "end": 112
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Apex Trade Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 14,
+          "end": 35
+        },
+        {
+          "text": "8990011223",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 42,
+          "end": 52
+        },
+        {
+          "text": "Omega Broker S.A.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 78,
+          "end": 95
+        },
+        {
+          "text": "1234567890",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 102,
+          "end": 112
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Omega Broker S.A.",
+          "relation": "has NIP",
+          "target": "1234567890",
+          "score": 1.0,
+          "source_span": [
+            78,
+            95
+          ],
+          "target_span": [
+            102,
+            112
+          ]
+        },
+        {
+          "source": "Apex Trade Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "8990011223",
+          "score": 1.0,
+          "source_span": [
+            14,
+            35
+          ],
+          "target_span": [
+            42,
+            52
+          ]
+        },
+        {
+          "source": "Omega Broker S.A.",
+          "relation": "broker for",
+          "target": "Apex Trade Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            78,
+            95
+          ],
+          "target_span": [
+            14,
+            35
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Omega Broker S.A.",
+          "relation": "has NIP",
+          "target": "1234567890",
+          "score": 1.0
+        },
+        {
+          "source": "Apex Trade Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "8990011223",
+          "score": 1.0
+        },
+        {
+          "source": "Omega Broker S.A.",
+          "relation": "broker for",
+          "target": "Apex Trade Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 3,
+      "text": "Polisa wystawiona dla Ubezpieczającego: Budimex-Trans Sp. z o.o., NIP: 5260012233, za pośrednictwem brokera ubezpieczeniowego: Mentor S.A., NIP: 9560001234.",
+      "predicted_entities": [
+        {
+          "text": "Budimex-Trans Sp. z o.o.",
+          "label": "client",
+          "score": 0.9281,
+          "start": 40,
+          "end": 64
+        },
+        {
+          "text": "5260012233",
+          "label": "NIP",
+          "score": 0.889,
+          "start": 71,
+          "end": 81
+        },
+        {
+          "text": "Mentor S.A.",
+          "label": "broker",
+          "score": 0.7974,
+          "start": 127,
+          "end": 138
+        },
+        {
+          "text": "9560001234",
+          "label": "NIP",
+          "score": 0.7857,
+          "start": 145,
+          "end": 155
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Budimex-Trans Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 40,
+          "end": 64
+        },
+        {
+          "text": "5260012233",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 71,
+          "end": 81
+        },
+        {
+          "text": "Mentor S.A.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 127,
+          "end": 138
+        },
+        {
+          "text": "9560001234",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 145,
+          "end": 155
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Mentor S.A.",
+          "relation": "has NIP",
+          "target": "9560001234",
+          "score": 1.0,
+          "source_span": [
+            127,
+            138
+          ],
+          "target_span": [
+            145,
+            155
+          ]
+        },
+        {
+          "source": "Budimex-Trans Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5260012233",
+          "score": 1.0,
+          "source_span": [
+            40,
+            64
+          ],
+          "target_span": [
+            71,
+            81
+          ]
+        },
+        {
+          "source": "Mentor S.A.",
+          "relation": "broker for",
+          "target": "Budimex-Trans Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            127,
+            138
+          ],
+          "target_span": [
+            40,
+            64
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Mentor S.A.",
+          "relation": "has NIP",
+          "target": "9560001234",
+          "score": 1.0
+        },
+        {
+          "source": "Budimex-Trans Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5260012233",
+          "score": 1.0
+        },
+        {
+          "source": "Mentor S.A.",
+          "relation": "broker for",
+          "target": "Budimex-Trans Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 4,
+      "text": "Ja, prezes zarządu TechSoft Sp. z o.o. (NIP: 1112223344), niniejszym powierzam obsługę brokerską spółce Grupa Brokerska Certus Sp. z o.o. (NIP: 9998887766).",
+      "predicted_entities": [
+        {
+          "text": "TechSoft Sp. z o.o.",
+          "label": "client",
+          "score": 0.9329,
+          "start": 19,
+          "end": 38
+        },
+        {
+          "text": "1112223344",
+          "label": "NIP",
+          "score": 0.8993,
+          "start": 45,
+          "end": 55
+        },
+        {
+          "text": "Grupa Brokerska Certus Sp. z o.o.",
+          "label": "broker",
+          "score": 0.8493,
+          "start": 104,
+          "end": 137
+        },
+        {
+          "text": "9998887766",
+          "label": "NIP",
+          "score": 0.842,
+          "start": 144,
+          "end": 154
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "TechSoft Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 19,
+          "end": 38
+        },
+        {
+          "text": "1112223344",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 45,
+          "end": 55
+        },
+        {
+          "text": "Grupa Brokerska Certus Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 104,
+          "end": 137
+        },
+        {
+          "text": "9998887766",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 144,
+          "end": 154
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Grupa Brokerska Certus Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "9998887766",
+          "score": 1.0,
+          "source_span": [
+            104,
+            137
+          ],
+          "target_span": [
+            144,
+            154
+          ]
+        },
+        {
+          "source": "TechSoft Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "1112223344",
+          "score": 1.0,
+          "source_span": [
+            19,
+            38
+          ],
+          "target_span": [
+            45,
+            55
+          ]
+        },
+        {
+          "source": "Grupa Brokerska Certus Sp. z o.o.",
+          "relation": "broker for",
+          "target": "TechSoft Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            104,
+            137
+          ],
+          "target_span": [
+            19,
+            38
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Grupa Brokerska Certus Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "9998887766",
+          "score": 1.0
+        },
+        {
+          "source": "TechSoft Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "1112223344",
+          "score": 1.0
+        },
+        {
+          "source": "Grupa Brokerska Certus Sp. z o.o.",
+          "relation": "broker for",
+          "target": "TechSoft Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 5,
+      "text": "Willis Towers Watson Polska Sp. z o.o. (NIP: 5260211789), reprezentując Ubezpieczającego Fabryka Mebli Forte S.A. (NIP: 7570001234), występuje o prolongatę polisy OC.",
+      "predicted_entities": [
+        {
+          "text": "Willis Towers Watson Polska Sp. z o.o.",
+          "label": "broker",
+          "score": 0.8425,
+          "start": 0,
+          "end": 38
+        },
+        {
+          "text": "5260211789",
+          "label": "NIP",
+          "score": 0.8894,
+          "start": 45,
+          "end": 55
+        },
+        {
+          "text": "Fabryka Mebli Forte S.A.",
+          "label": "client",
+          "score": 0.7604,
+          "start": 89,
+          "end": 113
+        },
+        {
+          "text": "7570001234",
+          "label": "NIP",
+          "score": 0.9081,
+          "start": 120,
+          "end": 130
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Willis Towers Watson Polska Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 0,
+          "end": 38
+        },
+        {
+          "text": "5260211789",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 45,
+          "end": 55
+        },
+        {
+          "text": "Fabryka Mebli Forte S.A.",
+          "label": "client",
+          "score": 1.0,
+          "start": 89,
+          "end": 113
+        },
+        {
+          "text": "7570001234",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 120,
+          "end": 130
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Willis Towers Watson Polska Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5260211789",
+          "score": 1.0,
+          "source_span": [
+            0,
+            38
+          ],
+          "target_span": [
+            45,
+            55
+          ]
+        },
+        {
+          "source": "Fabryka Mebli Forte S.A.",
+          "relation": "has NIP",
+          "target": "7570001234",
+          "score": 1.0,
+          "source_span": [
+            89,
+            113
+          ],
+          "target_span": [
+            120,
+            130
+          ]
+        },
+        {
+          "source": "Willis Towers Watson Polska Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Fabryka Mebli Forte S.A.",
+          "score": 1.0,
+          "source_span": [
+            0,
+            38
+          ],
+          "target_span": [
+            89,
+            113
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Willis Towers Watson Polska Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5260211789",
+          "score": 1.0
+        },
+        {
+          "source": "Fabryka Mebli Forte S.A.",
+          "relation": "has NIP",
+          "target": "7570001234",
+          "score": 1.0
+        },
+        {
+          "source": "Willis Towers Watson Polska Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Fabryka Mebli Forte S.A.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 6,
+      "text": "Działając w imieniu poszkodowanego klienta Eko-Dachy Sp. z o.o. (NIP: 6441239988), Dom Brokerski Aspergo S.A. (NIP: 5271122334) zgłasza szkodę z ubezpieczenia mienia.",
+      "predicted_entities": [
+        {
+          "text": "Eko-Dachy Sp. z o.o.",
+          "label": "client",
+          "score": 0.9064,
+          "start": 43,
+          "end": 63
+        },
+        {
+          "text": "6441239988",
+          "label": "NIP",
+          "score": 0.8369,
+          "start": 70,
+          "end": 80
+        },
+        {
+          "text": "Dom Brokerski Aspergo S.A.",
+          "label": "broker",
+          "score": 0.8722,
+          "start": 83,
+          "end": 109
+        },
+        {
+          "text": "5271122334",
+          "label": "NIP",
+          "score": 0.8849,
+          "start": 116,
+          "end": 126
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Eko-Dachy Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 43,
+          "end": 63
+        },
+        {
+          "text": "6441239988",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 70,
+          "end": 80
+        },
+        {
+          "text": "Dom Brokerski Aspergo S.A.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 83,
+          "end": 109
+        },
+        {
+          "text": "5271122334",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 116,
+          "end": 126
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Dom Brokerski Aspergo S.A.",
+          "relation": "has NIP",
+          "target": "5271122334",
+          "score": 1.0,
+          "source_span": [
+            83,
+            109
+          ],
+          "target_span": [
+            116,
+            126
+          ]
+        },
+        {
+          "source": "Eko-Dachy Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "6441239988",
+          "score": 1.0,
+          "source_span": [
+            43,
+            63
+          ],
+          "target_span": [
+            70,
+            80
+          ]
+        },
+        {
+          "source": "Dom Brokerski Aspergo S.A.",
+          "relation": "broker for",
+          "target": "Eko-Dachy Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            83,
+            109
+          ],
+          "target_span": [
+            43,
+            63
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Dom Brokerski Aspergo S.A.",
+          "relation": "has NIP",
+          "target": "5271122334",
+          "score": 1.0
+        },
+        {
+          "source": "Eko-Dachy Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "6441239988",
+          "score": 1.0
+        },
+        {
+          "source": "Dom Brokerski Aspergo S.A.",
+          "relation": "broker for",
+          "target": "Eko-Dachy Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 7,
+      "text": "Informujemy, że jedynym wyłącznym brokerem obsługującym Solaris Logistics Sp. z o.o. (NIP: 7820011223) jest Kancelaria Brokerska Quantum Sp. z o.o. (NIP: 5219988776).",
+      "predicted_entities": [
+        {
+          "text": "Solaris Logistics Sp. z o.o.",
+          "label": "client",
+          "score": 0.9178,
+          "start": 56,
+          "end": 84
+        },
+        {
+          "text": "7820011223",
+          "label": "NIP",
+          "score": 0.83,
+          "start": 91,
+          "end": 101
+        },
+        {
+          "text": "Kancelaria Brokerska Quantum Sp. z o.o.",
+          "label": "broker",
+          "score": 0.7648,
+          "start": 108,
+          "end": 147
+        },
+        {
+          "text": "5219988776",
+          "label": "NIP",
+          "score": 0.8491,
+          "start": 154,
+          "end": 164
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Solaris Logistics Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 56,
+          "end": 84
+        },
+        {
+          "text": "7820011223",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 91,
+          "end": 101
+        },
+        {
+          "text": "Kancelaria Brokerska Quantum Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 108,
+          "end": 147
+        },
+        {
+          "text": "5219988776",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 154,
+          "end": 164
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Kancelaria Brokerska Quantum Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5219988776",
+          "score": 1.0,
+          "source_span": [
+            108,
+            147
+          ],
+          "target_span": [
+            154,
+            164
+          ]
+        },
+        {
+          "source": "Solaris Logistics Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "7820011223",
+          "score": 1.0,
+          "source_span": [
+            56,
+            84
+          ],
+          "target_span": [
+            91,
+            101
+          ]
+        },
+        {
+          "source": "Kancelaria Brokerska Quantum Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Solaris Logistics Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            108,
+            147
+          ],
+          "target_span": [
+            56,
+            84
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Kancelaria Brokerska Quantum Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5219988776",
+          "score": 1.0
+        },
+        {
+          "source": "Solaris Logistics Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "7820011223",
+          "score": 1.0
+        },
+        {
+          "source": "Kancelaria Brokerska Quantum Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Solaris Logistics Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 8,
+      "text": "Aneks nr 2 do umowy zawartej pomiędzy Klientem Euro-Trans Cargo Sp. z o.o. (NIP: 9461122334) a Brokerem Broker Finanse Consulting S.A. (NIP: 6762233445).",
+      "predicted_entities": [
+        {
+          "text": "Euro-Trans Cargo Sp. z o.o.",
+          "label": "client",
+          "score": 0.8698,
+          "start": 47,
+          "end": 74
+        },
+        {
+          "text": "9461122334",
+          "label": "NIP",
+          "score": 0.8359,
+          "start": 81,
+          "end": 91
+        },
+        {
+          "text": "Broker Finanse Consulting S.A.",
+          "label": "broker",
+          "score": 0.818,
+          "start": 104,
+          "end": 134
+        },
+        {
+          "text": "6762233445",
+          "label": "NIP",
+          "score": 0.8391,
+          "start": 141,
+          "end": 151
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Euro-Trans Cargo Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 47,
+          "end": 74
+        },
+        {
+          "text": "9461122334",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 81,
+          "end": 91
+        },
+        {
+          "text": "Broker Finanse Consulting S.A.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 104,
+          "end": 134
+        },
+        {
+          "text": "6762233445",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 141,
+          "end": 151
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Broker Finanse Consulting S.A.",
+          "relation": "has NIP",
+          "target": "6762233445",
+          "score": 1.0,
+          "source_span": [
+            104,
+            134
+          ],
+          "target_span": [
+            141,
+            151
+          ]
+        },
+        {
+          "source": "Euro-Trans Cargo Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "9461122334",
+          "score": 1.0,
+          "source_span": [
+            47,
+            74
+          ],
+          "target_span": [
+            81,
+            91
+          ]
+        },
+        {
+          "source": "Broker Finanse Consulting S.A.",
+          "relation": "broker for",
+          "target": "Euro-Trans Cargo Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            104,
+            134
+          ],
+          "target_span": [
+            47,
+            74
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Broker Finanse Consulting S.A.",
+          "relation": "has NIP",
+          "target": "6762233445",
+          "score": 1.0
+        },
+        {
+          "source": "Euro-Trans Cargo Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "9461122334",
+          "score": 1.0
+        },
+        {
+          "source": "Broker Finanse Consulting S.A.",
+          "relation": "broker for",
+          "target": "Euro-Trans Cargo Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 9,
+      "text": "W imieniu Mocodawcy Selena Oil Sp. z o.o. NIP 8970012345 zapytanie składa Broker Ubezpieczeniowy Maxima Sp. z o.o. NIP 5831122334.",
+      "predicted_entities": [
+        {
+          "text": "Selena Oil Sp. z o.o.",
+          "label": "client",
+          "score": 0.882,
+          "start": 20,
+          "end": 41
+        },
+        {
+          "text": "8970012345",
+          "label": "NIP",
+          "score": 0.7651,
+          "start": 46,
+          "end": 56
+        },
+        {
+          "text": "Maxima Sp. z o.o.",
+          "label": "broker",
+          "score": 0.8541,
+          "start": 97,
+          "end": 114
+        },
+        {
+          "text": "5831122334",
+          "label": "NIP",
+          "score": 0.7556,
+          "start": 119,
+          "end": 129
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Selena Oil Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 20,
+          "end": 41
+        },
+        {
+          "text": "8970012345",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 46,
+          "end": 56
+        },
+        {
+          "text": "Maxima Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 97,
+          "end": 114
+        },
+        {
+          "text": "5831122334",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 119,
+          "end": 129
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Maxima Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5831122334",
+          "score": 1.0,
+          "source_span": [
+            97,
+            114
+          ],
+          "target_span": [
+            119,
+            129
+          ]
+        },
+        {
+          "source": "Selena Oil Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "8970012345",
+          "score": 1.0,
+          "source_span": [
+            20,
+            41
+          ],
+          "target_span": [
+            46,
+            56
+          ]
+        },
+        {
+          "source": "Maxima Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Selena Oil Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            97,
+            114
+          ],
+          "target_span": [
+            20,
+            41
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Maxima Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5831122334",
+          "score": 1.0
+        },
+        {
+          "source": "Selena Oil Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "8970012345",
+          "score": 1.0
+        },
+        {
+          "source": "Maxima Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Selena Oil Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 10,
+      "text": "Aon Polska Sp. z o.o. o numerze NIP 5260212001, na podstawie zlecenia od firmy Farmacja Polska S.A. posiadającej NIP 5250001122, przeprowadza audyt ryzyk ubezpieczeniowych.",
+      "predicted_entities": [
+        {
+          "text": "Aon Polska Sp. z o.o.",
+          "label": "broker",
+          "score": 0.7864,
+          "start": 0,
+          "end": 21
+        },
+        {
+          "text": "5260212001",
+          "label": "NIP",
+          "score": 0.7999,
+          "start": 36,
+          "end": 46
+        },
+        {
+          "text": "Farmacja Polska S.A.",
+          "label": "client",
+          "score": 0.9242,
+          "start": 79,
+          "end": 99
+        },
+        {
+          "text": "5250001122",
+          "label": "NIP",
+          "score": 0.842,
+          "start": 117,
+          "end": 127
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Aon Polska Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 0,
+          "end": 21
+        },
+        {
+          "text": "5260212001",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 36,
+          "end": 46
+        },
+        {
+          "text": "Farmacja Polska S.A.",
+          "label": "client",
+          "score": 1.0,
+          "start": 79,
+          "end": 99
+        },
+        {
+          "text": "5250001122",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 117,
+          "end": 127
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Aon Polska Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5260212001",
+          "score": 1.0,
+          "source_span": [
+            0,
+            21
+          ],
+          "target_span": [
+            36,
+            46
+          ]
+        },
+        {
+          "source": "Farmacja Polska S.A.",
+          "relation": "has NIP",
+          "target": "5250001122",
+          "score": 1.0,
+          "source_span": [
+            79,
+            99
+          ],
+          "target_span": [
+            117,
+            127
+          ]
+        },
+        {
+          "source": "Aon Polska Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Farmacja Polska S.A.",
+          "score": 1.0,
+          "source_span": [
+            0,
+            21
+          ],
+          "target_span": [
+            79,
+            99
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Aon Polska Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5260212001",
+          "score": 1.0
+        },
+        {
+          "source": "Farmacja Polska S.A.",
+          "relation": "has NIP",
+          "target": "5250001122",
+          "score": 1.0
+        },
+        {
+          "source": "Aon Polska Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Farmacja Polska S.A.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 11,
+      "text": "Stronami porozumienia są Ubezpieczający Pol-Druk Sp. z o.o. (NIP: 7771122334) oraz wyznaczony broker Marsh Sp. z o.o. (NIP: 5260212456).",
+      "predicted_entities": [
+        {
+          "text": "Pol-Druk Sp. z o.o.",
+          "label": "client",
+          "score": 0.9104,
+          "start": 40,
+          "end": 59
+        },
+        {
+          "text": "7771122334",
+          "label": "NIP",
+          "score": 0.8623,
+          "start": 66,
+          "end": 76
+        },
+        {
+          "text": "Marsh Sp. z o.o.",
+          "label": "broker",
+          "score": 0.9299,
+          "start": 101,
+          "end": 117
+        },
+        {
+          "text": "5260212456",
+          "label": "NIP",
+          "score": 0.8756,
+          "start": 124,
+          "end": 134
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Pol-Druk Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 40,
+          "end": 59
+        },
+        {
+          "text": "7771122334",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 66,
+          "end": 76
+        },
+        {
+          "text": "Marsh Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 101,
+          "end": 117
+        },
+        {
+          "text": "5260212456",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 124,
+          "end": 134
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Marsh Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5260212456",
+          "score": 1.0,
+          "source_span": [
+            101,
+            117
+          ],
+          "target_span": [
+            124,
+            134
+          ]
+        },
+        {
+          "source": "Pol-Druk Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "7771122334",
+          "score": 1.0,
+          "source_span": [
+            40,
+            59
+          ],
+          "target_span": [
+            66,
+            76
+          ]
+        },
+        {
+          "source": "Marsh Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Pol-Druk Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            101,
+            117
+          ],
+          "target_span": [
+            40,
+            59
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Marsh Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5260212456",
+          "score": 1.0
+        },
+        {
+          "source": "Pol-Druk Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "7771122334",
+          "score": 1.0
+        },
+        {
+          "source": "Marsh Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Pol-Druk Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 12,
+      "text": "Z dniem dzisiejszym spółka Chemikalia Bydgoszcz S.A. (NIP: 5540012233) odwołuje pełnomocnictwo udzielone Kancelarii Brokerskiej Protektor Sp. k. (NIP: 9531122334).",
+      "predicted_entities": [
+        {
+          "text": "Chemikalia Bydgoszcz S.A.",
+          "label": "client",
+          "score": 0.9174,
+          "start": 27,
+          "end": 52
+        },
+        {
+          "text": "5540012233",
+          "label": "NIP",
+          "score": 0.8622,
+          "start": 59,
+          "end": 69
+        },
+        {
+          "text": "Kancelarii Brokerskiej Protektor Sp. k.",
+          "label": "broker",
+          "score": 0.3796,
+          "start": 105,
+          "end": 144
+        },
+        {
+          "text": "9531122334",
+          "label": "NIP",
+          "score": 0.785,
+          "start": 151,
+          "end": 161
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Chemikalia Bydgoszcz S.A.",
+          "label": "client",
+          "score": 1.0,
+          "start": 27,
+          "end": 52
+        },
+        {
+          "text": "5540012233",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 59,
+          "end": 69
+        },
+        {
+          "text": "Kancelarii Brokerskiej Protektor Sp. k.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 105,
+          "end": 144
+        },
+        {
+          "text": "9531122334",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 151,
+          "end": 161
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Kancelarii Brokerskiej Protektor Sp. k.",
+          "relation": "has NIP",
+          "target": "9531122334",
+          "score": 1.0,
+          "source_span": [
+            105,
+            144
+          ],
+          "target_span": [
+            151,
+            161
+          ]
+        },
+        {
+          "source": "Chemikalia Bydgoszcz S.A.",
+          "relation": "has NIP",
+          "target": "5540012233",
+          "score": 1.0,
+          "source_span": [
+            27,
+            52
+          ],
+          "target_span": [
+            59,
+            69
+          ]
+        },
+        {
+          "source": "Kancelarii Brokerskiej Protektor Sp. k.",
+          "relation": "broker for",
+          "target": "Chemikalia Bydgoszcz S.A.",
+          "score": 1.0,
+          "source_span": [
+            105,
+            144
+          ],
+          "target_span": [
+            27,
+            52
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Kancelarii Brokerskiej Protektor Sp. k.",
+          "relation": "has NIP",
+          "target": "9531122334",
+          "score": 1.0
+        },
+        {
+          "source": "Chemikalia Bydgoszcz S.A.",
+          "relation": "has NIP",
+          "target": "5540012233",
+          "score": 1.0
+        },
+        {
+          "source": "Kancelarii Brokerskiej Protektor Sp. k.",
+          "relation": "broker for",
+          "target": "Chemikalia Bydgoszcz S.A.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 13,
+      "text": "Broker Grass Valley Insurance Sp. z o.o. (NIP: 5221122334) przekazuje reasekuratorowi dokumentację klienta Huta Stalowa Wola Trading S.A. (NIP: 8650012345).",
+      "predicted_entities": [
+        {
+          "text": "Grass Valley Insurance Sp. z o.o.",
+          "label": "broker",
+          "score": 0.8069,
+          "start": 7,
+          "end": 40
+        },
+        {
+          "text": "5221122334",
+          "label": "NIP",
+          "score": 0.8736,
+          "start": 47,
+          "end": 57
+        },
+        {
+          "text": "Huta Stalowa Wola Trading S.A.",
+          "label": "client",
+          "score": 0.9257,
+          "start": 107,
+          "end": 137
+        },
+        {
+          "text": "8650012345",
+          "label": "NIP",
+          "score": 0.8471,
+          "start": 144,
+          "end": 154
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Grass Valley Insurance Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 7,
+          "end": 40
+        },
+        {
+          "text": "5221122334",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 47,
+          "end": 57
+        },
+        {
+          "text": "Huta Stalowa Wola Trading S.A.",
+          "label": "client",
+          "score": 1.0,
+          "start": 107,
+          "end": 137
+        },
+        {
+          "text": "8650012345",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 144,
+          "end": 154
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Grass Valley Insurance Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5221122334",
+          "score": 1.0,
+          "source_span": [
+            7,
+            40
+          ],
+          "target_span": [
+            47,
+            57
+          ]
+        },
+        {
+          "source": "Huta Stalowa Wola Trading S.A.",
+          "relation": "has NIP",
+          "target": "8650012345",
+          "score": 1.0,
+          "source_span": [
+            107,
+            137
+          ],
+          "target_span": [
+            144,
+            154
+          ]
+        },
+        {
+          "source": "Grass Valley Insurance Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Huta Stalowa Wola Trading S.A.",
+          "score": 1.0,
+          "source_span": [
+            7,
+            40
+          ],
+          "target_span": [
+            107,
+            137
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Grass Valley Insurance Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5221122334",
+          "score": 1.0
+        },
+        {
+          "source": "Huta Stalowa Wola Trading S.A.",
+          "relation": "has NIP",
+          "target": "8650012345",
+          "score": 1.0
+        },
+        {
+          "source": "Grass Valley Insurance Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Huta Stalowa Wola Trading S.A.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 14,
+      "text": "Dane do polisy: Klient: Agro-Plon Sp. z o.o. (NIP: 7390011223), Broker: Kancelaria Brokerska Bonus S.A. (NIP: 5861122334).",
+      "predicted_entities": [
+        {
+          "text": "Agro-Plon Sp. z o.o.",
+          "label": "client",
+          "score": 0.9301,
+          "start": 24,
+          "end": 44
+        },
+        {
+          "text": "7390011223",
+          "label": "NIP",
+          "score": 0.8934,
+          "start": 51,
+          "end": 61
+        },
+        {
+          "text": "Kancelaria Brokerska Bonus S.A.",
+          "label": "broker",
+          "score": 0.7942,
+          "start": 72,
+          "end": 103
+        },
+        {
+          "text": "5861122334",
+          "label": "NIP",
+          "score": 0.8809,
+          "start": 110,
+          "end": 120
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Agro-Plon Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 24,
+          "end": 44
+        },
+        {
+          "text": "7390011223",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 51,
+          "end": 61
+        },
+        {
+          "text": "Kancelaria Brokerska Bonus S.A.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 72,
+          "end": 103
+        },
+        {
+          "text": "5861122334",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 110,
+          "end": 120
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Kancelaria Brokerska Bonus S.A.",
+          "relation": "has NIP",
+          "target": "5861122334",
+          "score": 1.0,
+          "source_span": [
+            72,
+            103
+          ],
+          "target_span": [
+            110,
+            120
+          ]
+        },
+        {
+          "source": "Agro-Plon Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "7390011223",
+          "score": 1.0,
+          "source_span": [
+            24,
+            44
+          ],
+          "target_span": [
+            51,
+            61
+          ]
+        },
+        {
+          "source": "Kancelaria Brokerska Bonus S.A.",
+          "relation": "broker for",
+          "target": "Agro-Plon Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            72,
+            103
+          ],
+          "target_span": [
+            24,
+            44
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Kancelaria Brokerska Bonus S.A.",
+          "relation": "has NIP",
+          "target": "5861122334",
+          "score": 1.0
+        },
+        {
+          "source": "Agro-Plon Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "7390011223",
+          "score": 1.0
+        },
+        {
+          "source": "Kancelaria Brokerska Bonus S.A.",
+          "relation": "broker for",
+          "target": "Agro-Plon Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 15,
+      "text": "Zleceniodawca Mega-Invest Sp. z o.o. (NIP: 5270011223) przesyła za pośrednictwem brokera Kancelaria Risk Partner Sp. z o.o. (NIP: 5213344556) deklarację bezszkodowości.",
+      "predicted_entities": [
+        {
+          "text": "Mega-Invest Sp. z o.o.",
+          "label": "client",
+          "score": 0.8768,
+          "start": 14,
+          "end": 36
+        },
+        {
+          "text": "5270011223",
+          "label": "NIP",
+          "score": 0.8679,
+          "start": 43,
+          "end": 53
+        },
+        {
+          "text": "Kancelaria Risk Partner Sp. z o.o.",
+          "label": "broker",
+          "score": 0.8609,
+          "start": 89,
+          "end": 123
+        },
+        {
+          "text": "5213344556",
+          "label": "NIP",
+          "score": 0.8831,
+          "start": 130,
+          "end": 140
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Mega-Invest Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 14,
+          "end": 36
+        },
+        {
+          "text": "5270011223",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 43,
+          "end": 53
+        },
+        {
+          "text": "Kancelaria Risk Partner Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 89,
+          "end": 123
+        },
+        {
+          "text": "5213344556",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 130,
+          "end": 140
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Kancelaria Risk Partner Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5213344556",
+          "score": 1.0,
+          "source_span": [
+            89,
+            123
+          ],
+          "target_span": [
+            130,
+            140
+          ]
+        },
+        {
+          "source": "Mega-Invest Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5270011223",
+          "score": 1.0,
+          "source_span": [
+            14,
+            36
+          ],
+          "target_span": [
+            43,
+            53
+          ]
+        },
+        {
+          "source": "Kancelaria Risk Partner Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Mega-Invest Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            89,
+            123
+          ],
+          "target_span": [
+            14,
+            36
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Kancelaria Risk Partner Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5213344556",
+          "score": 1.0
+        },
+        {
+          "source": "Mega-Invest Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5270011223",
+          "score": 1.0
+        },
+        {
+          "source": "Kancelaria Risk Partner Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Mega-Invest Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 16,
+      "text": "Kancelaria Brokerska Concord S.A. o numerze NIP 5840011223 weryfikuje w imieniu Mocodawcy Baltic Marine Sp. z o.o. o numerze NIP 5830009988 oferty ubezpieczenia casco statków.",
+      "predicted_entities": [
+        {
+          "text": "Concord S.A.",
+          "label": "broker",
+          "score": 0.4552,
+          "start": 21,
+          "end": 33
+        },
+        {
+          "text": "5840011223",
+          "label": "NIP",
+          "score": 0.7422,
+          "start": 48,
+          "end": 58
+        },
+        {
+          "text": "Baltic Marine Sp. z o.o.",
+          "label": "client",
+          "score": 0.9185,
+          "start": 90,
+          "end": 114
+        },
+        {
+          "text": "5830009988",
+          "label": "NIP",
+          "score": 0.785,
+          "start": 129,
+          "end": 139
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Concord S.A.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 21,
+          "end": 33
+        },
+        {
+          "text": "5840011223",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 48,
+          "end": 58
+        },
+        {
+          "text": "Baltic Marine Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 90,
+          "end": 114
+        },
+        {
+          "text": "5830009988",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 129,
+          "end": 139
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Concord S.A.",
+          "relation": "has NIP",
+          "target": "5840011223",
+          "score": 1.0,
+          "source_span": [
+            21,
+            33
+          ],
+          "target_span": [
+            48,
+            58
+          ]
+        },
+        {
+          "source": "Baltic Marine Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5830009988",
+          "score": 1.0,
+          "source_span": [
+            90,
+            114
+          ],
+          "target_span": [
+            129,
+            139
+          ]
+        },
+        {
+          "source": "Concord S.A.",
+          "relation": "broker for",
+          "target": "Baltic Marine Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            21,
+            33
+          ],
+          "target_span": [
+            90,
+            114
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Concord S.A.",
+          "relation": "has NIP",
+          "target": "5840011223",
+          "score": 1.0
+        },
+        {
+          "source": "Baltic Marine Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5830009988",
+          "score": 1.0
+        },
+        {
+          "source": "Concord S.A.",
+          "relation": "broker for",
+          "target": "Baltic Marine Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 17,
+      "text": "Umowa o obsługę brokerską: Zleceniodawcą jest Wielkopolska Fabryka Okien Sp. z o.o. (NIP: 7780011223), a Brokerem Grupa Brokerska Unity Sp. k. (NIP: 7831122334).",
+      "predicted_entities": [
+        {
+          "text": "Wielkopolska Fabryka Okien Sp. z o.o.",
+          "label": "client",
+          "score": 0.9413,
+          "start": 46,
+          "end": 83
+        },
+        {
+          "text": "7780011223",
+          "label": "NIP",
+          "score": 0.8647,
+          "start": 90,
+          "end": 100
+        },
+        {
+          "text": "Grupa Brokerska Unity Sp. k.",
+          "label": "broker",
+          "score": 0.8204,
+          "start": 114,
+          "end": 142
+        },
+        {
+          "text": "7831122334",
+          "label": "NIP",
+          "score": 0.819,
+          "start": 149,
+          "end": 159
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Wielkopolska Fabryka Okien Sp. z o.o.",
+          "label": "client",
+          "score": 1.0,
+          "start": 46,
+          "end": 83
+        },
+        {
+          "text": "7780011223",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 90,
+          "end": 100
+        },
+        {
+          "text": "Grupa Brokerska Unity Sp. k.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 114,
+          "end": 142
+        },
+        {
+          "text": "7831122334",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 149,
+          "end": 159
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Grupa Brokerska Unity Sp. k.",
+          "relation": "has NIP",
+          "target": "7831122334",
+          "score": 1.0,
+          "source_span": [
+            114,
+            142
+          ],
+          "target_span": [
+            149,
+            159
+          ]
+        },
+        {
+          "source": "Wielkopolska Fabryka Okien Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "7780011223",
+          "score": 1.0,
+          "source_span": [
+            46,
+            83
+          ],
+          "target_span": [
+            90,
+            100
+          ]
+        },
+        {
+          "source": "Grupa Brokerska Unity Sp. k.",
+          "relation": "broker for",
+          "target": "Wielkopolska Fabryka Okien Sp. z o.o.",
+          "score": 1.0,
+          "source_span": [
+            114,
+            142
+          ],
+          "target_span": [
+            46,
+            83
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Grupa Brokerska Unity Sp. k.",
+          "relation": "has NIP",
+          "target": "7831122334",
+          "score": 1.0
+        },
+        {
+          "source": "Wielkopolska Fabryka Okien Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "7780011223",
+          "score": 1.0
+        },
+        {
+          "source": "Grupa Brokerska Unity Sp. k.",
+          "relation": "broker for",
+          "target": "Wielkopolska Fabryka Okien Sp. z o.o.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 18,
+      "text": "Dom Brokerski Lex Insurance Sp. z o.o. (NIP: 5258877665) reprezentujący Ubezpieczonego Stol-Bud S.A. (NIP: 6770012345) wnosi o bezsporną wypłatę świadczenia.",
+      "predicted_entities": [
+        {
+          "text": "Lex Insurance Sp. z o.o.",
+          "label": "broker",
+          "score": 0.685,
+          "start": 14,
+          "end": 38
+        },
+        {
+          "text": "5258877665",
+          "label": "NIP",
+          "score": 0.8545,
+          "start": 45,
+          "end": 55
+        },
+        {
+          "text": "Stol-Bud S.A.",
+          "label": "client",
+          "score": 0.7775,
+          "start": 87,
+          "end": 100
+        },
+        {
+          "text": "6770012345",
+          "label": "NIP",
+          "score": 0.8978,
+          "start": 107,
+          "end": 117
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Lex Insurance Sp. z o.o.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 14,
+          "end": 38
+        },
+        {
+          "text": "5258877665",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 45,
+          "end": 55
+        },
+        {
+          "text": "Stol-Bud S.A.",
+          "label": "client",
+          "score": 1.0,
+          "start": 87,
+          "end": 100
+        },
+        {
+          "text": "6770012345",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 107,
+          "end": 117
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Lex Insurance Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5258877665",
+          "score": 1.0,
+          "source_span": [
+            14,
+            38
+          ],
+          "target_span": [
+            45,
+            55
+          ]
+        },
+        {
+          "source": "Stol-Bud S.A.",
+          "relation": "has NIP",
+          "target": "6770012345",
+          "score": 1.0,
+          "source_span": [
+            87,
+            100
+          ],
+          "target_span": [
+            107,
+            117
+          ]
+        },
+        {
+          "source": "Lex Insurance Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Stol-Bud S.A.",
+          "score": 1.0,
+          "source_span": [
+            14,
+            38
+          ],
+          "target_span": [
+            87,
+            100
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Lex Insurance Sp. z o.o.",
+          "relation": "has NIP",
+          "target": "5258877665",
+          "score": 1.0
+        },
+        {
+          "source": "Stol-Bud S.A.",
+          "relation": "has NIP",
+          "target": "6770012345",
+          "score": 1.0
+        },
+        {
+          "source": "Lex Insurance Sp. z o.o.",
+          "relation": "broker for",
+          "target": "Stol-Bud S.A.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    {
+      "index": 19,
+      "text": "Niniejsza klauzula potwierdza, że pieczę nad ubezpieczeniem firmy Pro-Logistyka S.A. (NIP: 5220011223) sprawuje broker Supra Brokers S.A. (NIP: 8971659988).",
+      "predicted_entities": [
+        {
+          "text": "Pro-Logistyka S.A.",
+          "label": "client",
+          "score": 0.94,
+          "start": 66,
+          "end": 84
+        },
+        {
+          "text": "5220011223",
+          "label": "NIP",
+          "score": 0.7491,
+          "start": 91,
+          "end": 101
+        },
+        {
+          "text": "Supra Brokers S.A.",
+          "label": "broker",
+          "score": 0.8955,
+          "start": 119,
+          "end": 137
+        },
+        {
+          "text": "8971659988",
+          "label": "NIP",
+          "score": 0.6474,
+          "start": 144,
+          "end": 154
+        }
+      ],
+      "expected_entities": [
+        {
+          "text": "Pro-Logistyka S.A.",
+          "label": "client",
+          "score": 1.0,
+          "start": 66,
+          "end": 84
+        },
+        {
+          "text": "5220011223",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 91,
+          "end": 101
+        },
+        {
+          "text": "Supra Brokers S.A.",
+          "label": "broker",
+          "score": 1.0,
+          "start": 119,
+          "end": 137
+        },
+        {
+          "text": "8971659988",
+          "label": "NIP",
+          "score": 1.0,
+          "start": 144,
+          "end": 154
+        }
+      ],
+      "entity_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 4,
+        "fp": 0,
+        "fn": 0
+      },
+      "predicted_relations": [
+        {
+          "source": "Supra Brokers S.A.",
+          "relation": "has NIP",
+          "target": "8971659988",
+          "score": 1.0,
+          "source_span": [
+            119,
+            137
+          ],
+          "target_span": [
+            144,
+            154
+          ]
+        },
+        {
+          "source": "Pro-Logistyka S.A.",
+          "relation": "has NIP",
+          "target": "5220011223",
+          "score": 1.0,
+          "source_span": [
+            66,
+            84
+          ],
+          "target_span": [
+            91,
+            101
+          ]
+        },
+        {
+          "source": "Supra Brokers S.A.",
+          "relation": "broker for",
+          "target": "Pro-Logistyka S.A.",
+          "score": 1.0,
+          "source_span": [
+            119,
+            137
+          ],
+          "target_span": [
+            66,
+            84
+          ]
+        }
+      ],
+      "expected_relations": [
+        {
+          "source": "Supra Brokers S.A.",
+          "relation": "has NIP",
+          "target": "8971659988",
+          "score": 1.0
+        },
+        {
+          "source": "Pro-Logistyka S.A.",
+          "relation": "has NIP",
+          "target": "5220011223",
+          "score": 1.0
+        },
+        {
+          "source": "Supra Brokers S.A.",
+          "relation": "broker for",
+          "target": "Pro-Logistyka S.A.",
+          "score": 1.0
+        }
+      ],
+      "relation_metrics": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 3,
+        "fp": 0,
+        "fn": 0
+      }
+    }
+  ]
+}

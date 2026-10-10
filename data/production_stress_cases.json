@@ -1,0 +1,62 @@
+[
+  {
+    "id": "stress-01-long-block",
+    "description": "Długa komparycja: adres, KRS i REGON (220 znaków) pomiędzy nazwą a NIP",
+    "text": "Mocodawca Fabryka Maszyn Pol-Tech Sp. z o.o. z siedzibą w Warszawie przy ul. Prostej 10, 00-123 Warszawa, wpisana do rejestru przedsiębiorców KRS pod numerem 0000123456, REGON 123456789, posługująca się numerem NIP: 5250007738, upoważnia dom brokerski Kancelaria Brokerska Lex Sp. z o.o., NIP: 5260251049.",
+    "expected_broker": "Kancelaria Brokerska Lex Sp. z o.o.",
+    "expected_broker_nip": "5260251049",
+    "expected_client": "Fabryka Maszyn Pol-Tech Sp. z o.o.",
+    "expected_client_nip": "5250007738",
+    "expect_needs_review": false
+  },
+  {
+    "id": "stress-02-boutique-broker",
+    "description": "Kancelaria butikowa bez słowa 'broker' w nazwie własnej",
+    "text": "Zleceniodawca Firma Budowlana Alfa Sp. z o.o. (NIP: 5250007738) powierza obsługę brokerską spółce Doradztwo Finansowe Omega Sp. z o.o. (NIP: 5260251049).",
+    "expected_broker": "Doradztwo Finansowe Omega Sp. z o.o.",
+    "expected_broker_nip": "5260251049",
+    "expected_client": "Budowlana Alfa Sp. z o.o.",
+    "expected_client_nip": "5250007738",
+    "expect_needs_review": false
+  },
+  {
+    "id": "stress-03-spaced-and-hyphenated-nips",
+    "description": "Formatowanie NIP ze spacjami i dywizami",
+    "text": "Ubezpieczający Budimex-Trans Sp. z o.o. o numerze NIP: 525 000 77 38 udziela pełnomocnictwa brokerowi Concordia Brokers S.A., legitymującemu się numerem NIP: 526-025-10-49.",
+    "expected_broker": "Concordia Brokers S.A.",
+    "expected_broker_nip": "5260251049",
+    "expected_client": "Budimex-Trans Sp. z o.o.",
+    "expected_client_nip": "5250007738",
+    "expect_needs_review": false
+  },
+  {
+    "id": "stress-04-ocr-label-typo",
+    "description": "Błąd OCR w etykiecie NIP (N1P)",
+    "text": "Klient: Agro-Plon Sp. z o.o. (N1P: 5250007738), Broker: Kancelaria Brokerska Bonus S.A. (N1P: 7740001454).",
+    "expected_broker": "Kancelaria Brokerska Bonus S.A.",
+    "expected_broker_nip": "7740001454",
+    "expected_client": "Agro-Plon Sp. z o.o.",
+    "expected_client_nip": "5250007738",
+    "expect_needs_review": false
+  },
+  {
+    "id": "stress-05-invalid-checksum-flag",
+    "description": "Niepoprawna suma kontrolna NIP powinna uruchomić flagę needs_review",
+    "text": "Mocodawca Test-Client Sp. z o.o. (NIP: 5250007739) wyznacza brokera Broker-Test S.A. (NIP: 5260251049).",
+    "expected_broker": "Broker-Test S.A.",
+    "expected_broker_nip": "5260251049",
+    "expected_client": "Test-Client Sp. z o.o.",
+    "expected_client_nip": "5250007739",
+    "expect_needs_review": true
+  },
+  {
+    "id": "stress-06-single-client-no-broker",
+    "description": "Dokument jednostronny bez brokera (np. wewnętrzne oświadczenie)",
+    "text": "Oświadczenie spółki: Mocodawca Petro-Chemicals S.A. o numerze NIP 7740001454 potwierdza ważność zgłoszenia szkodowego.",
+    "expected_broker": null,
+    "expected_broker_nip": null,
+    "expected_client": "Petro-Chemicals S.A.",
+    "expected_client_nip": "7740001454",
+    "expect_needs_review": true
+  }
+]

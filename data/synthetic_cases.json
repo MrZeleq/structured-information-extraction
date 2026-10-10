@@ -1,0 +1,878 @@
+[
+  {
+    "text": "Przedsiębiorstwo Handlowo-Usługowe Pol-Trans Sp. z o.o. (NIP: 5251234567, REGON: 140987654) zawarło umowę dostawy.",
+    "expected_entities": [
+      {
+        "text": "Pol-Trans Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 35,
+        "end": 55
+      },
+      {
+        "text": "5251234567",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 62,
+        "end": 72
+      },
+      {
+        "text": "140987654",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 81,
+        "end": 90
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Pol-Trans Sp. z o.o.",
+        "relation": "has NIP",
+        "target": "5251234567",
+        "score": 1.0
+      },
+      {
+        "source": "Pol-Trans Sp. z o.o.",
+        "relation": "has REGON",
+        "target": "140987654",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Single company with parenthetical NIP and REGON."
+    }
+  },
+  {
+    "text": "Spółka Apex IT Services Sp. z o.o. o numerze NIP 7891234567 zarejestrowała nowy oddział w Poznaniu.",
+    "expected_entities": [
+      {
+        "text": "Apex IT Services Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 7,
+        "end": 34
+      },
+      {
+        "text": "7891234567",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 49,
+        "end": 59
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Apex IT Services Sp. z o.o.",
+        "relation": "has NIP",
+        "target": "7891234567",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Single company with NIP only."
+    }
+  },
+  {
+    "text": "Hurtownia Materiałów Budowlanych Stal-Bud S.A. legitymująca się numerem REGON 360123456 otworzyła centrum logistyczne.",
+    "expected_entities": [
+      {
+        "text": "Stal-Bud S.A.",
+        "label": "company",
+        "score": 1.0,
+        "start": 33,
+        "end": 46
+      },
+      {
+        "text": "360123456",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 78,
+        "end": 87
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Stal-Bud S.A.",
+        "relation": "has REGON",
+        "target": "360123456",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Single company with REGON only."
+    }
+  },
+  {
+    "text": "Umowa konsorcjum została zawarta pomiędzy firmą Delta Motors Sp. z o.o. o NIP 1112223344 a spółką Epsilon Trans S.A. o NIP 5556667788.",
+    "expected_entities": [
+      {
+        "text": "Delta Motors Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 48,
+        "end": 71
+      },
+      {
+        "text": "1112223344",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 78,
+        "end": 88
+      },
+      {
+        "text": "Epsilon Trans S.A.",
+        "label": "company",
+        "score": 1.0,
+        "start": 98,
+        "end": 116
+      },
+      {
+        "text": "5556667788",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 123,
+        "end": 133
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Delta Motors Sp. z o.o.",
+        "relation": "has NIP",
+        "target": "1112223344",
+        "score": 1.0
+      },
+      {
+        "source": "Epsilon Trans S.A.",
+        "relation": "has NIP",
+        "target": "5556667788",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "moderate",
+      "description": "Two companies with individual NIPs in one clause."
+    }
+  },
+  {
+    "text": "Kancelaria Doradcza Lex Partner Sp. k. (NIP 9511122334, REGON 012345678) połączyła się z firmą Audyt Pro S.A. (NIP 7019876543, REGON 987654321).",
+    "expected_entities": [
+      {
+        "text": "Lex Partner Sp. k.",
+        "label": "company",
+        "score": 1.0,
+        "start": 20,
+        "end": 38
+      },
+      {
+        "text": "9511122334",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 44,
+        "end": 54
+      },
+      {
+        "text": "012345678",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 62,
+        "end": 71
+      },
+      {
+        "text": "Audyt Pro S.A.",
+        "label": "company",
+        "score": 1.0,
+        "start": 95,
+        "end": 109
+      },
+      {
+        "text": "7019876543",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 115,
+        "end": 125
+      },
+      {
+        "text": "987654321",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 133,
+        "end": 142
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Lex Partner Sp. k.",
+        "relation": "has NIP",
+        "target": "9511122334",
+        "score": 1.0
+      },
+      {
+        "source": "Lex Partner Sp. k.",
+        "relation": "has REGON",
+        "target": "012345678",
+        "score": 1.0
+      },
+      {
+        "source": "Audyt Pro S.A.",
+        "relation": "has NIP",
+        "target": "7019876543",
+        "score": 1.0
+      },
+      {
+        "source": "Audyt Pro S.A.",
+        "relation": "has REGON",
+        "target": "987654321",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "moderate",
+      "description": "Two companies each having both NIP and REGON."
+    }
+  },
+  {
+    "text": "Przedsiębiorstwo Wiśniewski Transport (NIP: 6762233445, REGON: 123456789) zrealizowało zlecenie przewozowe.",
+    "expected_entities": [
+      {
+        "text": "Wiśniewski Transport",
+        "label": "company",
+        "score": 1.0,
+        "start": 17,
+        "end": 37
+      },
+      {
+        "text": "6762233445",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 44,
+        "end": 54
+      },
+      {
+        "text": "123456789",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 63,
+        "end": 72
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Wiśniewski Transport",
+        "relation": "has NIP",
+        "target": "6762233445",
+        "score": 1.0
+      },
+      {
+        "source": "Wiśniewski Transport",
+        "relation": "has REGON",
+        "target": "123456789",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Single enterprise with NIP and REGON."
+    }
+  },
+  {
+    "text": "Numer NIP 5260011223 został przypisany do spółki Mazovia Energy S.A. podczas rejestracji sądowej.",
+    "expected_entities": [
+      {
+        "text": "5260011223",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 10,
+        "end": 20
+      },
+      {
+        "text": "Mazovia Energy S.A.",
+        "label": "company",
+        "score": 1.0,
+        "start": 49,
+        "end": 68
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Mazovia Energy S.A.",
+        "relation": "has NIP",
+        "target": "5260011223",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "moderate",
+      "description": "Inverted syntax where NIP precedes company name."
+    }
+  },
+  {
+    "text": "Zgodnie z rejestrem numer REGON 001122334 posiada przedsiębiorstwo Wod-Kan Instalacje Sp. z o.o.",
+    "expected_entities": [
+      {
+        "text": "001122334",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 32,
+        "end": 41
+      },
+      {
+        "text": "Wod-Kan Instalacje Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 67,
+        "end": 96
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Wod-Kan Instalacje Sp. z o.o.",
+        "relation": "has REGON",
+        "target": "001122334",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "moderate",
+      "description": "Inverted syntax where REGON precedes company name."
+    }
+  },
+  {
+    "text": "Startup GreenTech Solutions P.S.A. z numerem NIP 8991234567 oraz REGON 380123456 pozyskał dofinansowanie.",
+    "expected_entities": [
+      {
+        "text": "GreenTech Solutions P.S.A.",
+        "label": "company",
+        "score": 1.0,
+        "start": 8,
+        "end": 34
+      },
+      {
+        "text": "8991234567",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 49,
+        "end": 59
+      },
+      {
+        "text": "380123456",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 71,
+        "end": 80
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "GreenTech Solutions P.S.A.",
+        "relation": "has NIP",
+        "target": "8991234567",
+        "score": 1.0
+      },
+      {
+        "source": "GreenTech Solutions P.S.A.",
+        "relation": "has REGON",
+        "target": "380123456",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Simple joint-stock company (P.S.A.) with NIP and REGON."
+    }
+  },
+  {
+    "text": "Wspólnicy firmy Jawor Meble Sp. j. o NIP 7780011223 i REGON 630123456 podjęli uchwałę o rozbudowie zakładu.",
+    "expected_entities": [
+      {
+        "text": "Jawor Meble Sp. j.",
+        "label": "company",
+        "score": 1.0,
+        "start": 16,
+        "end": 34
+      },
+      {
+        "text": "7780011223",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 41,
+        "end": 51
+      },
+      {
+        "text": "630123456",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 60,
+        "end": 69
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Jawor Meble Sp. j.",
+        "relation": "has NIP",
+        "target": "7780011223",
+        "score": 1.0
+      },
+      {
+        "source": "Jawor Meble Sp. j.",
+        "relation": "has REGON",
+        "target": "630123456",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "General partnership (Sp. j.) with NIP and REGON."
+    }
+  },
+  {
+    "text": "Agencja Marketingowa Media Wave Sp. k. posługująca się numerem REGON 141234567 powiększyła zespół kreatywny.",
+    "expected_entities": [
+      {
+        "text": "Media Wave Sp. k.",
+        "label": "company",
+        "score": 1.0,
+        "start": 21,
+        "end": 38
+      },
+      {
+        "text": "141234567",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 69,
+        "end": 78
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Media Wave Sp. k.",
+        "relation": "has REGON",
+        "target": "141234567",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Limited partnership (Sp. k.) with REGON only."
+    }
+  },
+  {
+    "text": "Laboratorium Diagnostyczne Bio-Gen Sp. z o.o. (NIP: 5831122334, REGON: 190123456) wdrożyło nowy system analityczny.",
+    "expected_entities": [
+      {
+        "text": "Bio-Gen Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 27,
+        "end": 45
+      },
+      {
+        "text": "5831122334",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 52,
+        "end": 62
+      },
+      {
+        "text": "190123456",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 71,
+        "end": 80
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Bio-Gen Sp. z o.o.",
+        "relation": "has NIP",
+        "target": "5831122334",
+        "score": 1.0
+      },
+      {
+        "source": "Bio-Gen Sp. z o.o.",
+        "relation": "has REGON",
+        "target": "190123456",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Diagnostic lab company with NIP and REGON."
+    }
+  },
+  {
+    "text": "Spółka Fin-Expert S.A. wpisana do rejestru KRS 0000123456 posiada NIP 5219988776.",
+    "expected_entities": [
+      {
+        "text": "Fin-Expert S.A.",
+        "label": "company",
+        "score": 1.0,
+        "start": 7,
+        "end": 22
+      },
+      {
+        "text": "5219988776",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 70,
+        "end": 80
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Fin-Expert S.A.",
+        "relation": "has NIP",
+        "target": "5219988776",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Company with KRS distractor number and NIP."
+    }
+  },
+  {
+    "text": "Kontakt do biura firmy Hurt-Chem Sp. z o.o. o numerze REGON 270123456 to numer 228887766.",
+    "expected_entities": [
+      {
+        "text": "Hurt-Chem Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 23,
+        "end": 43
+      },
+      {
+        "text": "270123456",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 60,
+        "end": 69
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Hurt-Chem Sp. z o.o.",
+        "relation": "has REGON",
+        "target": "270123456",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Company with phone distractor number and REGON."
+    }
+  },
+  {
+    "text": "Faktura wystawiona przez Sprzedawcę Agro-Plon S.A. (NIP 7712233445) dla Nabywcy Młyn-Pol Sp. z o.o. (NIP 8823344556).",
+    "expected_entities": [
+      {
+        "text": "Agro-Plon S.A.",
+        "label": "company",
+        "score": 1.0,
+        "start": 36,
+        "end": 50
+      },
+      {
+        "text": "7712233445",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 56,
+        "end": 66
+      },
+      {
+        "text": "Młyn-Pol Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 80,
+        "end": 99
+      },
+      {
+        "text": "8823344556",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 105,
+        "end": 115
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Agro-Plon S.A.",
+        "relation": "has NIP",
+        "target": "7712233445",
+        "score": 1.0
+      },
+      {
+        "source": "Młyn-Pol Sp. z o.o.",
+        "relation": "has NIP",
+        "target": "8823344556",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "moderate",
+      "description": "Commercial invoice context with buyer and seller NIPs."
+    }
+  },
+  {
+    "text": "Podwykonawca robót drogowych Drog-Bud Sp. k. o identyfikatorze NIP 9541122334 oraz REGON 240123456 zakończył etap prac.",
+    "expected_entities": [
+      {
+        "text": "Drog-Bud Sp. k.",
+        "label": "company",
+        "score": 1.0,
+        "start": 29,
+        "end": 44
+      },
+      {
+        "text": "9541122334",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 67,
+        "end": 77
+      },
+      {
+        "text": "240123456",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 89,
+        "end": 98
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Drog-Bud Sp. k.",
+        "relation": "has NIP",
+        "target": "9541122334",
+        "score": 1.0
+      },
+      {
+        "source": "Drog-Bud Sp. k.",
+        "relation": "has REGON",
+        "target": "240123456",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Subcontractor company with NIP and REGON."
+    }
+  },
+  {
+    "text": "Firma Doradztwo Biznesowe Anna Nowak (NIP: 5271122334, REGON: 142123456) świadczy usługi analizy rynku.",
+    "expected_entities": [
+      {
+        "text": "Doradztwo Biznesowe Anna Nowak",
+        "label": "company",
+        "score": 1.0,
+        "start": 6,
+        "end": 36
+      },
+      {
+        "text": "5271122334",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 43,
+        "end": 53
+      },
+      {
+        "text": "142123456",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 62,
+        "end": 71
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Doradztwo Biznesowe Anna Nowak",
+        "relation": "has NIP",
+        "target": "5271122334",
+        "score": 1.0
+      },
+      {
+        "source": "Doradztwo Biznesowe Anna Nowak",
+        "relation": "has REGON",
+        "target": "142123456",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Consulting business with personal name in firm title."
+    }
+  },
+  {
+    "text": "Przedstawiciele spółek Vesta Trade S.A. oraz Nord Capital Sp. z o.o. dyskutowali o przejęciu podmiotu o numerze NIP 6790011223.",
+    "expected_entities": [
+      {
+        "text": "Vesta Trade S.A.",
+        "label": "company",
+        "score": 1.0,
+        "start": 23,
+        "end": 39
+      },
+      {
+        "text": "Nord Capital Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 45,
+        "end": 68
+      },
+      {
+        "text": "6790011223",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 116,
+        "end": 126
+      }
+    ],
+    "expected_relations": [],
+    "metadata": {
+      "difficulty": "hard",
+      "description": "Ambiguous unlinked scenario where NIP is unassigned."
+    }
+  },
+  {
+    "text": "Wrocławski software house CodeCraft Solutions Sp. z o.o. podał w stopce rejestracyjnej numer REGON 020123456.",
+    "expected_entities": [
+      {
+        "text": "CodeCraft Solutions Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 26,
+        "end": 56
+      },
+      {
+        "text": "020123456",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 99,
+        "end": 108
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "CodeCraft Solutions Sp. z o.o.",
+        "relation": "has REGON",
+        "target": "020123456",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "standard",
+      "description": "Software house company with REGON only."
+    }
+  },
+  {
+    "text": "Porozumienie trójstronne podpisali: Alior Soft Sp. z o.o. (NIP 1230001122, REGON 140001122), Baltic Port S.A. (NIP 5860002233, REGON 190002233) oraz Cargo Silesia Sp. k. (NIP 6340003344, REGON 270003344).",
+    "expected_entities": [
+      {
+        "text": "Alior Soft Sp. z o.o.",
+        "label": "company",
+        "score": 1.0,
+        "start": 36,
+        "end": 57
+      },
+      {
+        "text": "1230001122",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 63,
+        "end": 73
+      },
+      {
+        "text": "140001122",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 81,
+        "end": 90
+      },
+      {
+        "text": "Baltic Port S.A.",
+        "label": "company",
+        "score": 1.0,
+        "start": 93,
+        "end": 109
+      },
+      {
+        "text": "5860002233",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 115,
+        "end": 125
+      },
+      {
+        "text": "190002233",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 133,
+        "end": 142
+      },
+      {
+        "text": "Cargo Silesia Sp. k.",
+        "label": "company",
+        "score": 1.0,
+        "start": 149,
+        "end": 169
+      },
+      {
+        "text": "6340003344",
+        "label": "NIP",
+        "score": 1.0,
+        "start": 175,
+        "end": 185
+      },
+      {
+        "text": "270003344",
+        "label": "REGON",
+        "score": 1.0,
+        "start": 193,
+        "end": 202
+      }
+    ],
+    "expected_relations": [
+      {
+        "source": "Alior Soft Sp. z o.o.",
+        "relation": "has NIP",
+        "target": "1230001122",
+        "score": 1.0
+      },
+      {
+        "source": "Alior Soft Sp. z o.o.",
+        "relation": "has REGON",
+        "target": "140001122",
+        "score": 1.0
+      },
+      {
+        "source": "Baltic Port S.A.",
+        "relation": "has NIP",
+        "target": "5860002233",
+        "score": 1.0
+      },
+      {
+        "source": "Baltic Port S.A.",
+        "relation": "has REGON",
+        "target": "190002233",
+        "score": 1.0
+      },
+      {
+        "source": "Cargo Silesia Sp. k.",
+        "relation": "has NIP",
+        "target": "6340003344",
+        "score": 1.0
+      },
+      {
+        "source": "Cargo Silesia Sp. k.",
+        "relation": "has REGON",
+        "target": "270003344",
+        "score": 1.0
+      }
+    ],
+    "metadata": {
+      "difficulty": "hard",
+      "description": "Tripartite contract with 3 companies, 3 NIPs, and 3 REGONs."
+    }
+  }
+]

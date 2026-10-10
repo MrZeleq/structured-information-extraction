@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "structured-information-extraction"
+version = "0.1.0"
+description = "Modern zero-shot Information Extraction pipeline combining GLiNER and GLiREL"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Experimental IE Lab" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "gliner>=0.2.16",
+    "glirel>=1.2.0",
+    "loguru>=0.7.0",
+    "protobuf>=4.0.0",
+    "pydantic>=2.0.0",
+    "torch>=2.0.0",
+    "transformers>=4.40.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipykernel>=6.0.0",
+    "pytest>=8.0.0",
+    "ruff>=0.8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"*.ipynb" = ["E402"]
+"notebooks/*" = ["E402"]
