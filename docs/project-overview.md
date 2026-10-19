@@ -1,144 +1,103 @@
-# Project Overview: Structured Information Extraction
+# Technical Overview
 
-## 1. Project Goal
+## Research scope
 
-`structured-information-extraction` is a research and engineering repository designed to explore, benchmark, and deploy modern Information Extraction (IE) pipelines without proprietary external APIs or heavyweight orchestration frameworks.
+This project investigates a hybrid information extraction approach for Polish business text, with insurance brokerage authorizations as its main application. It combines pretrained models for recognizing entity mentions with explicit rules for identifier normalization, relation constraints, and business role assignment.
 
-The core motivation is to move beyond fixed-ontology models and brittle pure regular expressions by leveraging a **hybrid neuro-symbolic paradigm**:
-1. **GLiNER** (Generalist and Lightweight Model for Named Entity Recognition) for detecting entity mentions of arbitrary types on the fly.
-2. **GLiREL** (Generalist Lightweight Model for Zero-Shot Relation Extraction) for classifying directed relationships between extracted entity spans without task-specific retraining.
-3. **Deterministic Normalization & Verification**: OCR defect remediation (`TextNormalizer`) and official Polish **Modulo 11** checksum verification for tax and business identifiers (NIP, REGON, KRS).
-4. **Specialized Neuro-Symbolic Resolution**: The `BrokerClientResolver` solves complex commercial party and tax identifier assignment in Polish insurance authorizations (*pełnomocnictwa brokerskie*), achieving 100% accuracy on standard benchmarks while defending against real-world contract noise.
+The research contribution is the experimental integration and analysis of these components for a specific domain. The repository does not introduce a new neural architecture or train a new checkpoint.
 
----
+The central distinction is between an entity's type and its role: both a broker and a client can be companies, while their roles depend on the surrounding passage. The specialized pipeline therefore detects company mentions first and resolves roles afterwards.
 
-## 2. Architecture & Design Principles
+## Model interfaces and configuration
 
-The project implements two complementary extraction architectures sharing a normalized schema and post-processing foundation:
+| Component | Default | Interface |
+| :--- | :--- | :--- |
+| Entity extraction | `urchade/gliner_multi-v2.1` | `BaseNERExtractor.extract_entities()` |
+| Relation extraction | `jackboyla/glirel-large-v0` | `BaseRelationExtractor.extract_relations()` |
+| Runtime | CUDA when available, otherwise CPU | `PipelineConfig` and constructor arguments |
 
-```mermaid
-flowchart TD
-    subgraph Input["Input Document Layer"]
-        DOC["Raw Document / Scanned OCR Text"]
-    end
+The default model names can also be set through `DEFAULT_GLINER_MODEL` and `DEFAULT_GLIREL_MODEL`. Models are loaded from pretrained weights and run locally. There is no task-specific training step in the repository.
 
-    subgraph Normalization["Layer 1: Normalization & OCR Remediation"]
-        NORM["TextNormalizer\n(Soft-hyphens, spaced NIPs, OCR label typos)"]
-        CHK["Checksums Engine\n(Modulo 11 for NIP / REGON)"]
-    end
+Each wrapper accepts a preloaded model for dependency injection. New model wrappers can implement the same abstract interfaces, allowing pipeline components to be compared without changing the evaluation schema.
 
-    subgraph Neural["Layer 2: Zero-Shot Neural Extraction"]
-        GLINER["GLiNERExtractor\n(Zero-shot span detection)"]
-        GLIREL["GLiRELExtractor\n(Zero-shot relation classification)"]
-    end
+## General extraction flow
 
-    subgraph PostProcessing["Layer 3: Post-Processing & Resolution"]
-        CLEAN["EntityPostprocessor\n(Prefix trimming, KRS pruning, length dispatch)"]
-        RFILT["RelationFilter\n(Domain / range constraints, collision pruning)"]
-        RESOLV["BrokerClientResolver\n(Legal Entity Blocks <= 350 chars,\nGeneric Legal Roots, KNF Registry)"]
-    end
+[`ExtractionPipeline`](../src/structured_ie/pipeline/extraction_pipeline.py) executes:
 
-    subgraph Outputs["Layer 4: Typed Output Schemas"]
-        RES1["ExtractionResult\n(Normalized entities & relation graph triples)"]
-        RES2["BrokerClientExtraction\n(BrokerParty, ClientParty, needs_review, review_reasons)"]
-    end
+1. GLiNER entity detection using caller-supplied labels and a confidence threshold.
+2. Optional entity cleanup.
+3. GLiREL relation prediction if at least two entities and relation labels are available.
+4. Optional schema-based relation filtering.
+5. Construction of an `ExtractionResult`.
 
-    DOC --> NORM
-    NORM --> GLINER
-    NORM --> CHK
+`from_pretrained(enable_postprocessing=True, schema=...)` enables both cleanup and relation filtering. For custom component injection, instantiate `ExtractionPipeline(ner_extractor=..., relation_extractor=..., postprocessor=..., relation_filter=...)` directly.
 
-    GLINER --> CLEAN
-    CLEAN --> RFILT
-    CLEAN --> RESOLV
+### Alignment
 
-    %% Pipeline A: General Relation Pipeline
-    CLEAN --> GLIREL
-    GLIREL --> RFILT
-    RFILT --> RES1
+GLiNER supplies character offsets, whereas GLiREL consumes token-index spans. [`alignment.py`](../src/structured_ie/pipeline/alignment.py) tokenizes with offsets, maps entity spans to token spans, and converts predictions back into the shared relation format. The GLiREL wrapper passes tokens rather than raw text and includes a pretrained-loading compatibility patch.
 
-    %% Pipeline B: Specialized Broker-Client Pipeline
-    CHK --> RESOLV
-    RESOLV --> RES2
-```
+### Cleanup and constraints
 
-### Design Tenets
-- **Separation of Concerns**: NER extraction, token alignment, relation classification, input normalization, and legal role resolution are decoupled into modular, testable components.
-- **Normalized Schemas**: Entities and relations output strict Pydantic models (`Entity`, `Relation`, `ExtractionResult`, `BrokerClientExtraction`) with offsets, labels, surface texts, confidence scores, and audit flags.
-- **Span-to-Token Integrity**: A dedicated alignment layer (`alignment.py`) bridges GLiNER character offsets and GLiREL token indices without corrupting entity spans.
-- **Zero API Dependency**: The entire pipeline runs completely locally on CPU or GPU using open-weights models from Hugging Face.
-- **Defensive Engineering**: Checksum validation and confidence margin analysis provide automatic Human-In-The-Loop (`needs_review`) signals when text is corrupt or ambiguous.
+`EntityPostprocessor` removes selected company introductions and identifier prefixes, discards short or digit-free identifier candidates, and reclassifies identifiers by digit count. A context heuristic filters candidates associated with KRS labels.
 
----
+`RelationFilter` verifies that both endpoints correspond to entities and satisfy the configured source/target types. For predicates with `functional_target=True`, it keeps the highest-scoring relation per target string. Although the schema also exposes `functional_source`, the current filter does not enforce it.
 
-## 3. Core Components & Model Stack
+The default schema contains `has NIP`, `has REGON`, `broker for`, and `works for`. Unknown predicates pass the type-constraint check. Endpoint lookup uses surface text, so repeated identical mentions are not fully distinguished by this filter.
 
-| Component | Class / Implementation | Backbone / Technique | Strengths & Role |
-| :--- | :--- | :--- | :--- |
-| **Named Entity Recognition** | `GLiNERExtractor` | `urchade/gliner_multi-v2.1` | Zero-shot multilingual span extraction; detects companies, tax IDs, persons, and arbitrary user labels. |
-| **Relation Extraction** | `GLiRELExtractor` | `jackboyla/glirel-large-v0` | Zero-shot relation classification across arbitrary predicates with span-to-token alignment. |
-| **Input Normalization** | `TextNormalizer` | Regex & Unicode normalization | Resolves linebreaks (`ubez-\npieczający`), formatted NIPs (`525 000 77 38`), and OCR label typos (`N1P:`). |
-| **Mathematical Validation** | `checksums.py` | Modulo 11 arithmetic | Mathematically verifies 10-digit Polish NIP, 9/14-digit REGON, and KRS identifiers. |
-| **Entity Cleaning** | `EntityPostprocessor` | Deterministic rules & regex | Strips label prefixes (`NIP: ...`), disambiguates NIP vs REGON by length, and filters out KRS collisions. |
-| **Relational Constraints** | `RelationFilter` | Relational schema filters | Prunes inverted relations (`NIP -> company`) and cross-identifier links (`NIP -> REGON`). |
-| **Broker-Client Resolution** | `BrokerClientResolver` | Legal Entity Block Analysis | Syntactically binds NIPs to companies across long registration footers (up to 350 chars) and ranks broker vs client. |
+## Broker–client extraction flow
 
----
+[`BrokerClientPipeline`](../src/structured_ie/pipeline/broker_client_pipeline.py) specializes the process:
 
-## 4. Extraction Pipelines
+1. Detect `company` and `NIP` with GLiNER; the default entity threshold is `0.25`.
+2. Add pattern-based NIP candidates when nearby model spans do not already cover them.
+3. Apply entity cleanup.
+4. Bind NIPs to companies and assign broker/client roles through `BrokerClientResolver`.
+5. Return either entities and relations or structured parties with validation metadata.
 
-The framework provides two primary entry points:
+This path does not use GLiREL. Its optional label and relation-threshold arguments exist for compatibility with the shared evaluator; they do not configure neural relation prediction.
 
-### 1. `ExtractionPipeline` (General Relational IE)
-Best for discovering open-ended entity graphs from unstructured text:
-```python
-from structured_ie.pipeline.extraction_pipeline import ExtractionPipeline
+### Identifier binding
 
-pipeline = ExtractionPipeline.from_pretrained()
-result = pipeline.extract(
-    text="Firma Alfa Sp. z o.o. o numerze NIP 5250007738 zatrudnia Jana Kowalskiego.",
-    entity_labels=["company", "NIP", "person"],
-    relation_labels=["has NIP", "works for"],
-)
-```
+The resolver attempts three passes:
 
-### 2. `BrokerClientPipeline` (Specialized Production Pipeline)
-Best for extracting insurance authorizations, broker representation letters, and complex commercial agreements:
-```python
-from structured_ie.pipeline.broker_client_pipeline import BrokerClientPipeline
+- Attach a NIP shortly after a company when punctuation or a NIP label suggests a local association.
+- Search registration text after a company, with a default maximum distance of 350 characters, or a short preceding-identifier pattern. Intervening companies block these attachments.
+- Assign the nearest remaining eligible NIP as a fallback.
 
-pipeline = BrokerClientPipeline.from_pretrained()
-extraction = pipeline.extract_structured(
-    "Mocodawca Fabryka Maszyn Pol-Tech Sp. z o.o. (NIP: 5250007738) upoważnia "
-    "Kancelarię Brokerską Lex Sp. z o.o. (NIP: 5260251049)."
-)
+The last pass does not apply the 350-character registration limit. Bindings are greedy and keyed by company surface text, so they are not a global optimization over distinct legal entities.
 
-print(extraction.broker.name, extraction.broker.nip)  # Lex Sp. z o.o. / 5260251049
-print(extraction.client.name, extraction.client.nip)  # Pol-Tech Sp. z o.o. / 5250007738
-print(extraction.needs_review)  # False (both NIPs pass Modulo 11)
-```
+### Role assignment
 
----
+The resolver scores generic brokerage terms, local role markers, and preceding/following phrases. It can accept a caller-supplied `broker_registry` collection of name fragments; it does not fetch an external registry.
 
-## 5. Potential Future Models & Extensibility
+For two or more company candidates, only the first two are compared. The company with the larger broker-minus-client score becomes the broker, and the other becomes the client. For one company, the larger of its two role scores determines the role, with ties assigned to broker.
 
-The codebase is built with abstract base classes (`BaseNERExtractor`, `BaseRelationExtractor`) so that new extraction approaches can be plugged in seamlessly:
+These are explicit heuristics. Role assignment is not equivalent to resolving legal status or establishing an active authorization, and ambiguous documents can still receive a pair of role labels.
 
-1. **Supervised Polish Domain Encoders**:
-   - Fine-tuning Polish language backbones (e.g. `allegro/herbert-large-cased`, `sdadas/polish-roberta-large-v2`) on annotated contracts for extreme out-of-domain robustness.
-2. **Long-Document Sliding Window & PDF Chunking**:
-   - Windowing with overlapping spans for processing 10–50 page commercial agreements with section targeting (*Komparycja*, *Podpisy*).
-3. **Multi-Party Cardinality Expansion**:
-   - Generalizing role extraction from 1:1 to multi-party scenarios (co-brokering consortia with 2+ brokers, capital groups with 3+ subsidiaries).
-4. **Local Generative LLM Integration**:
-   - Optional quantized local LLMs (Llama-3, Mistral, Qwen via `llama.cpp` or `vLLM`) for ambiguous edge cases flagged with `needs_review=True`.
+## Normalization and validation
 
----
+[`TextNormalizer`](../src/structured_ie/normalization/text_normalizer.py) provides NIP candidate detection, digit normalization, and a separate utility for joining words split across hyphenated line breaks. Only candidate detection is integrated into the specialized pipeline; neither pipeline automatically runs full-text line-break cleanup.
 
-## 6. Evaluation Strategy
+[`checksums.py`](../src/structured_ie/normalization/checksums.py) contains NIP and REGON checksum utilities and a KRS digit-format check. KRS is not checksum-validated by this code. Structured broker/client extraction invokes NIP validation; the general pipeline does not automatically apply all available validation utilities.
 
-To facilitate direct model-to-model comparisons, the project contains an automated evaluation suite (`src/structured_ie/evaluation/`):
-- **Metrics**: Standard Precision, Recall, and F1 score computed separately for:
-  - **Entity Extraction**: Both exact string matching and character-span matching.
-  - **Relation Extraction**: Triplet matching `(source, relation, target)`.
-- **Agnostic Benchmark Runner**: `PipelineEvaluator` runs any pipeline that implements the extraction protocol against a dataset of `LabeledSample`s, producing micro-averaged metrics and per-sample error breakdowns.
-- **Stress-Testing Suite**: The dedicated `data/production_stress_cases.json` suite continuously validates the system against OCR defects, long registration footers, boutique broker names, and corrupted tax identifiers.
+Normalized identifier text may omit separators that remain in the original document. Offsets are intended to locate the source region, but exact character-slice equality is not a universal invariant. Formatted identifiers require targeted span validation.
+
+## Output contract
+
+| Output | Contents |
+| :--- | :--- |
+| `Entity` | Text, label, score, start/end character offsets |
+| `Relation` | Source text, predicate, target text, score, optional endpoint spans |
+| `ExtractionResult` | Input text, entities, relations |
+| `BrokerClientExtraction` | Optional broker/client, `confidence`, `needs_review`, `review_reasons` |
+| `BrokerParty` / `ClientParty` | Name, NIP, spans, entity score, checksum status, raw NIP text |
+
+`extract()` returns the shared entity/relation representation. `extract_structured()` also validates NIPs and prepares review metadata. It flags failed NIP checksums, missing parties, and a role-score margin below `1.5`. A missing NIP adds a reason but does not, by itself, set `needs_review=True` in the current implementation.
+
+Scores have different meanings: party scores originate from NER, generated relations receive a fixed `1.0`, regex-injected candidates receive `0.99`, and aggregate `confidence` is `1.0` or `0.75` according to the review flag. These values are not calibrated probabilities and should not be compared as if they were.
+
+## Evaluation and extension
+
+`PipelineEvaluator` accepts objects exposing `extract(text, entity_labels, relation_labels)` and aggregates entity and relation TP/FP/FN counts into micro precision, recall, and F1. The CLI adds thresholds and chooses a pipeline explicitly or from the dataset labels.
+
+See [experiments](experiments.md) for matching semantics, committed reports, and reproducibility limits. Future work includes independently held-out documents, repeated-mention resolution, multi-party assignment, calibrated abstention, full-text offset tracking, and document chunking.

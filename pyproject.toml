@@ -7,6 +7,7 @@ name = "structured-information-extraction"
 version = "0.1.0"
 description = "Modern zero-shot Information Extraction pipeline combining GLiNER and GLiREL"
 readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.11"
 authors = [
     { name = "Experimental IE Lab" }
@@ -15,6 +16,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: Apache Software License",
 ]
 dependencies = [
     "gliner>=0.2.16",
